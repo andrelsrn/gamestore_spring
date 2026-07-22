@@ -1,5 +1,7 @@
 package com.generation.buytoplay.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -27,7 +29,7 @@ public class Produto {
     @Positive(message = "O atributo preco deve ser maior que zero!")
     private BigDecimal preco;
 
-    @NotBlank(message = "O atributo quantidadeEstoque é obrigatório!")
+    @NotNull(message = "O atributo quantidadeEstoque é obrigatório!")
     private Integer quantidadeEstoque;
 
     @Size(max = 5000, message = "O link da foto não pode ter mais de 5000 caracteres")
@@ -35,6 +37,7 @@ public class Produto {
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
+    @JsonIgnoreProperties("produtos")
     private Categoria categoria;
 
     public Produto(Long id, String nome, String console, BigDecimal preco, Integer quantidadeEstoque, String imagem, Categoria categoria) {
