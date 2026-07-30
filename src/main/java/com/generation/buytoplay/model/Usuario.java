@@ -18,11 +18,11 @@ public class Usuario {
     private Long id;
 
     @NotBlank(message = "O atributo nome é obrigatório!")
-    @Column(nullable = false)
+    @Column(length = 255, nullable = false)
     private String nome;
 
     @NotBlank(message = "O atributo usuário é obrigatório!")
-    @Column(nullable = false)
+    @Column(length = 255, nullable = false)
     @Email(message = "O atributo usuário deve ser um email válido!")
     private String usuario;
 
@@ -31,8 +31,8 @@ public class Usuario {
     @Column(length = 255)
     private String senha;
 
-    @Size(max = 5000, message = "O link da foto não pode ser maior do que 5000 caracteres")
-    @Column(length = 5000)
+    @Size(max = 500, message = "O link da foto não pode ser maior do que 5000 caracteres")
+    @Column(length = 500)
     private String foto;
 
     @Temporal(TemporalType.DATE)
